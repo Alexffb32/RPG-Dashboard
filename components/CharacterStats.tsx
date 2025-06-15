@@ -1,6 +1,7 @@
 'use client'
 
 import { Heart, Shield, Zap, Target, Eye, Footprints, Sword, Star, Crosshair, Activity, TrendingUp } from 'lucide-react'
+import { useGame } from './GameState'
 
 interface StatItemProps {
   icon: React.ReactNode
@@ -50,33 +51,35 @@ function StatItem({ icon, label, value, description, percentage, color = 'discor
 }
 
 export default function CharacterStats() {
+  const { gameState } = useGame();
+  
   // Primary Stats - Core character attributes
   const primaryStats = [
     { 
       icon: <Sword className="w-4 h-4 text-orange-400" />, 
       label: 'Strength', 
-      value: 8, 
+      value: gameState.stats.strength, 
       color: 'orange-400',
       description: 'Increases Attack Power, affecting damage dealt in combat.'
     },
     { 
       icon: <Shield className="w-4 h-4 text-blue-400" />, 
       label: 'Defence', 
-      value: 8, 
+      value: gameState.stats.defense, 
       color: 'blue-400',
       description: 'Increases Protection, affecting damage absorbed from hits.'
     },
     { 
       icon: <Zap className="w-4 h-4 text-yellow-400" />, 
       label: 'Speed', 
-      value: 6, 
+      value: gameState.stats.speed, 
       color: 'yellow-400',
       description: 'Increases Agility, affecting battle speed and enemy hit chance.'
     },
     { 
       icon: <Target className="w-4 h-4 text-purple-400" />, 
       label: 'Dexterity', 
-      value: 6, 
+      value: gameState.stats.dexterity, 
       color: 'purple-400',
       description: 'Increases Accuracy, affecting chance to hit without being hit back.'
     },
@@ -87,49 +90,49 @@ export default function CharacterStats() {
     { 
       icon: <Star className="w-4 h-4 text-red-400" />,
       label: 'Critical Chance', 
-      value: 15, 
+      value: 0, 
       color: 'red-400',
       description: 'Determines the likelihood of landing a critical strike.' 
     },
     { 
       icon: <TrendingUp className="w-4 h-4 text-red-500" />,
       label: 'Critical Damage', 
-      value: 8, 
+      value: 0, 
       color: 'red-500',
       description: 'Bonus damage applied during a critical strike.' 
     },
     { 
       icon: <Sword className="w-4 h-4 text-orange-400" />,
       label: 'Attack Power', 
-      value: 528, 
+      value: 0, 
       color: 'orange-400',
       description: 'Total damage applied to the opponent in battle.' 
     },
     { 
       icon: <Shield className="w-4 h-4 text-blue-400" />,
       label: 'Protection', 
-      value: 347, 
+      value: 0, 
       color: 'blue-400',
       description: 'Total damage absorbed from incoming hits.' 
     },
     { 
       icon: <Zap className="w-4 h-4 text-yellow-400" />,
       label: 'Agility', 
-      value: 81, 
+      value: 0, 
       color: 'yellow-400',
       description: 'Affects the enemy\'s chance of hitting your character.' 
     },
     { 
       icon: <Crosshair className="w-4 h-4 text-purple-400" />,
       label: 'Accuracy', 
-      value: 92, 
+      value: 0, 
       color: 'purple-400',
       description: 'Affects your character\'s chance of landing a hit.' 
     },
     { 
       icon: <Activity className="w-4 h-4 text-pink-400" />,
       label: 'Damage', 
-      value: 25, 
+      value: 0, 
       color: 'pink-400',
       description: 'Fixed amount added to calculated damage in battle.' 
     }
@@ -140,16 +143,16 @@ export default function CharacterStats() {
     { 
       icon: <Footprints className="w-4 h-4 text-green-400" />,
       label: 'Movement Speed', 
-      value: 120, 
+      value: 0, 
       color: 'green-400',
       description: 'Affects travel and hunting speed. Increased by pets.',
       showEfficiency: true,
-      efficiency: 20
+      efficiency: 0
     },
     { 
       icon: <Star className="w-4 h-4 text-yellow-300" />,
       label: 'Magic Find', 
-      value: 45, 
+      value: 0, 
       color: 'yellow-300',
       description: 'Increases chance of finding higher-quality items from enemies.' 
     }
@@ -160,34 +163,34 @@ export default function CharacterStats() {
     { 
       icon: <Target className="w-4 h-4 text-cyan-400" />,
       label: 'Mining Efficiency', 
-      value: 110, 
+      value: 0, 
       color: 'cyan-400',
       description: 'Speed of mining actions and ore extraction.',
       showEfficiency: true,
-      efficiency: 10
+      efficiency: 0
     },
     { 
       icon: <Target className="w-4 h-4 text-blue-300" />,
       label: 'Fishing Efficiency', 
-      value: 105, 
+      value: 0, 
       color: 'blue-300',
       description: 'Speed of fishing actions and catch rates.',
       showEfficiency: true,
-      efficiency: 5
+      efficiency: 0
     },
     { 
       icon: <Target className="w-4 h-4 text-green-500" />,
       label: 'Woodcutting Efficiency', 
-      value: 115, 
+      value: 0, 
       color: 'green-500',
       description: 'Speed of woodcutting and timber harvesting.',
       showEfficiency: true,
-      efficiency: 15
+      efficiency: 0
     },
     { 
       icon: <Target className="w-4 h-4 text-orange-500" />,
       label: 'Cooking Efficiency', 
-      value: 100, 
+      value: 0, 
       color: 'orange-500',
       description: 'Speed of cooking and food preparation.',
       showEfficiency: true,
@@ -209,7 +212,7 @@ export default function CharacterStats() {
         <div className="w-full bg-discord-dark rounded-full h-3 mb-2">
           <div className="bg-red-500 h-3 rounded-full" style={{ width: '100%' }}></div>
         </div>
-        <div className="text-sm text-discord-muted">718 of 718</div>
+        <div className="text-sm text-discord-muted">500 of 500</div>
       </div>
 
       {/* Character Info */}
@@ -223,19 +226,19 @@ export default function CharacterStats() {
         </div>
         <div className="flex justify-between">
           <span className="text-discord-muted">Gold</span>
-          <span className="text-discord-text font-semibold">18,048</span>
+          <span className="text-discord-text font-semibold">0</span>
         </div>
         <div className="flex justify-between">
           <span className="text-discord-muted">Tokens</span>
-          <span className="text-discord-text font-semibold">330</span>
+          <span className="text-discord-text font-semibold">0</span>
         </div>
         <div className="flex justify-between">
           <span className="text-discord-muted">Class</span>
-          <span className="text-discord-text font-semibold">Warrior</span>
+          <span className="text-discord-text font-semibold">Beginner</span>
         </div>
         <div className="flex justify-between">
           <span className="text-discord-muted">Birth Date</span>
-          <span className="text-discord-text font-semibold">19th August 2024</span>
+          <span className="text-discord-text font-semibold">Today</span>
         </div>
       </div>
 
@@ -269,31 +272,31 @@ export default function CharacterStats() {
           <div className="grid grid-cols-3 gap-4 text-sm">
             <div>
               <div className="text-discord-muted">Agility</div>
-              <div className="text-discord-text font-semibold">52</div>
+              <div className="text-discord-text font-semibold">0</div>
             </div>
             <div>
               <div className="text-discord-muted">Accuracy</div>
-              <div className="text-discord-text font-semibold">35</div>
+              <div className="text-discord-text font-semibold">0</div>
             </div>
             <div>
               <div className="text-discord-muted">Protection</div>
-              <div className="text-discord-text font-semibold">19</div>
+              <div className="text-discord-text font-semibold">0</div>
             </div>
             <div>
               <div className="text-discord-muted">Attack Power</div>
-              <div className="text-discord-text font-semibold">18</div>
+              <div className="text-discord-text font-semibold">0</div>
             </div>
             <div>
               <div className="text-discord-muted">Movement Speed</div>
-              <div className="text-discord-text font-semibold">5.8</div>
+              <div className="text-discord-text font-semibold">0</div>
             </div>
             <div>
               <div className="text-discord-muted">Critical Chance</div>
-              <div className="text-discord-text font-semibold">7</div>
+              <div className="text-discord-text font-semibold">0</div>
             </div>
             <div>
               <div className="text-discord-muted">Critical Damage</div>
-              <div className="text-discord-text font-semibold">7</div>
+              <div className="text-discord-text font-semibold">0</div>
             </div>
           </div>
           <button className="mt-4 text-discord-blurple text-sm hover:text-discord-blurple/80">All Pets</button>

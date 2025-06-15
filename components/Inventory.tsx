@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { Package, Sword, Shield, Shirt, Crown, Gem, Potion, Star, User, AlertTriangle, CheckCircle } from 'lucide-react'
+import { useGame } from './GameState'
 
 interface InventoryItem {
   id: string
@@ -31,7 +32,7 @@ const inventoryItems: InventoryItem[] = [
     type: 'weapon',
     rarity: 'common',
     icon: <span className="text-amber-600">🗡️</span>,
-    stats: { attack: 12 },
+    stats: { attack: 0 },
     description: 'A basic wooden training sword.'
   },
   {
@@ -40,7 +41,7 @@ const inventoryItems: InventoryItem[] = [
     type: 'weapon',
     rarity: 'uncommon',
     icon: <span className="text-gray-400">🪓</span>,
-    stats: { attack: 25, strength: 3 },
+    stats: { attack: 0, strength: 0 },
     description: 'A heavy iron axe for chopping wood and enemies.'
   },
   {
@@ -50,7 +51,7 @@ const inventoryItems: InventoryItem[] = [
     rarity: 'uncommon',
     icon: <span className="text-blue-400">🗡️</span>,
     equipped: true,
-    stats: { attack: 18, speed: 5 },
+    stats: { attack: 0, speed: 0 },
     description: 'A quick steel dagger for swift strikes.'
   },
   {
@@ -70,7 +71,7 @@ const inventoryItems: InventoryItem[] = [
     rarity: 'common',
     icon: <span className="text-amber-700">🪖</span>,
     equipped: true,
-    stats: { defense: 8 },
+    stats: { defense: 0 },
     description: 'Basic leather head protection.'
   },
   {
@@ -80,7 +81,7 @@ const inventoryItems: InventoryItem[] = [
     rarity: 'uncommon',
     icon: <span className="text-gray-400">🛡️</span>,
     equipped: true,
-    stats: { defense: 22, protection: 5 },
+    stats: { defense: 0, protection: 0 },
     description: 'Interlocked metal rings for protection.'
   },
   {
@@ -90,7 +91,7 @@ const inventoryItems: InventoryItem[] = [
     rarity: 'uncommon',
     icon: <span className="text-gray-500">🥾</span>,
     equipped: true,
-    stats: { defense: 12, speed: 2 },
+    stats: { defense: 0, speed: 0 },
     description: 'Heavy iron boots for protection.'
   },
   // Consumables
@@ -210,7 +211,7 @@ const inventoryItems: InventoryItem[] = [
     type: 'weapon',
     rarity: 'uncommon',
     icon: <span className="text-gray-500">🔨</span>,
-    stats: { crafting: 25, attack: 15 },
+    stats: { crafting: 0, attack: 0 },
     description: 'A heavy hammer for crafting and combat.'
   }
 ]
@@ -218,6 +219,7 @@ const inventoryItems: InventoryItem[] = [
 
 
 export default function Inventory() {
+  const { gameState, sellItem, equipItem, unequipItem } = useGame()
   const [selectedItem, setSelectedItem] = useState<InventoryItem | null>(null)
   const [filter, setFilter] = useState<string>('all')
   const [sortBy, setSortBy] = useState<string>('name')
@@ -251,22 +253,11 @@ export default function Inventory() {
 
   const handleUseItem = (item: InventoryItem) => {
     if (item.name === 'Metamorphite') {
-      if (!canUseMetamorphite()) {
-        const daysSinceLastChange = Math.floor((Date.now() - currentCharacter.lastClassChange.getTime()) / (1000 * 60 * 60 * 24))
-        const daysRemaining = 14 - daysSinceLastChange
-        setUseItemMessage({
-          type: 'error',
-          message: `Cannot change class yet. ${daysRemaining} days remaining until next class change.`
-        })
-        return
-      }
       setShowClassChangeModal(true)
+      setSelectedItem(item)
     } else {
-      // Handle other consumable items
-      setUseItemMessage({
-        type: 'success',
-        message: `Used ${item.name}!`
-      })
+      setUseItemMessage(`Used ${item.name}!`)
+      setTimeout(() => setUseItemMessage(''), 3000)
     }
   }
 
@@ -290,7 +281,7 @@ export default function Inventory() {
     }
   }, [useItemMessage])
 
-  const filteredItems = inventoryItems.filter(item => {
+  const filteredItems = gameState.inventory.filter(item => {
     if (filter === 'all') return true
     return item.type === filter
   }).sort((a, b) => {
@@ -307,8 +298,8 @@ export default function Inventory() {
     }
   })
 
-  const equippedItems = inventoryItems.filter(item => item.equipped)
-  const totalItems = inventoryItems.length
+  const equippedItems = gameState.inventory.filter(item => item.equipped)
+  const totalItems = gameState.inventory.length
   const maxSlots = 50
 
   return (
@@ -474,12 +465,18 @@ export default function Inventory() {
               
               <div className="flex gap-2 mt-4">
                 {!selectedItem.equipped && selectedItem.type !== 'consumable' && selectedItem.type !== 'material' && (
-                  <button className="px-4 py-2 bg-discord-blurple text-white rounded hover:bg-discord-blurple/80 transition-colors text-sm">
+                  <button 
+                    onClick={() => equipItem(selectedItem.id)}
+                    className="px-4 py-2 bg-discord-blurple text-white rounded hover:bg-discord-blurple/80 transition-colors text-sm"
+                  >
                     Equip
                   </button>
                 )}
                 {selectedItem.equipped && (
-                  <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-500/80 transition-colors text-sm">
+                  <button 
+                    onClick={() => unequipItem(selectedItem.id)}
+                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-500/80 transition-colors text-sm"
+                  >
                     Unequip
                   </button>
                 )}

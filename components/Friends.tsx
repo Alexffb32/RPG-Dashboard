@@ -23,79 +23,19 @@ export default function Friends() {
     {
       id: '1',
       name: 'Guttojss',
-      level: 346,
+      level: 0,
       class: 'Ranger',
       avatar: '🏹',
       isOnline: false,
       lastSeen: '2 hours ago',
-      location: 'Mystic Forest',
-      status: 'friend'
-    },
-    {
-      id: '2',
-      name: 'DragonSlayer99',
-      level: 412,
-      class: 'Warrior',
-      avatar: '⚔️',
-      isOnline: true,
-      location: 'Dragon\'s Lair',
-      status: 'friend'
-    },
-    {
-      id: '3',
-      name: 'MysticMage',
-      level: 298,
-      class: 'Mage',
-      avatar: '🔮',
-      isOnline: true,
-      location: 'Crystal Tower',
-      status: 'friend'
-    },
-    {
-      id: '4',
-      name: 'ShadowNinja',
-      level: 367,
-      class: 'Assassin',
-      avatar: '🗡️',
-      isOnline: false,
-      lastSeen: '1 day ago',
+      location: 'Starting Area',
       status: 'friend'
     }
   ]
 
-  const pendingRequests: Friend[] = [
-    {
-      id: '5',
-      name: 'NewPlayer123',
-      level: 45,
-      class: 'Warrior',
-      avatar: '🛡️',
-      isOnline: true,
-      status: 'received'
-    },
-    {
-      id: '6',
-      name: 'ElfArcher',
-      level: 156,
-      class: 'Ranger',
-      avatar: '🏹',
-      isOnline: false,
-      lastSeen: '30 minutes ago',
-      status: 'received'
-    }
-  ]
+  const pendingRequests: Friend[] = []
 
-  const sentRequests: Friend[] = [
-    {
-      id: '7',
-      name: 'FireMage',
-      level: 234,
-      class: 'Mage',
-      avatar: '🔥',
-      isOnline: true,
-      status: 'pending'
-    }
-  ]
+  const sentRequests: Friend[] = []
 
   const getStatusColor = (isOnline: boolean) => {
     return isOnline ? 'bg-green-400' : 'bg-gray-500'

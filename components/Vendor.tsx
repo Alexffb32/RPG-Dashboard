@@ -218,7 +218,7 @@ export default function Vendor() {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 text-sm text-discord-muted">
               <Coins className="w-4 h-4 text-yellow-400" />
-              <span>Your Gold: 17,540</span>
+              <span>Your Gold: 0</span>
             </div>
             <button
               onClick={() => setShowCart(!showCart)}

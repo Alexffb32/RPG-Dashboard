@@ -19,7 +19,7 @@ import Membership from '../components/Membership'
 import MapComponent from '../components/Map'
 import SettingsComponent from '../components/Settings'
 
-type ActiveView = 'character' | 'inventory' | 'badges' | 'selection' | 'quests' | 'skills' | 'market' | 'vendor' | 'battle' | 'pets' | 'guild' | 'campaign' | 'friends' | 'leaderboard' | 'membership' | 'map' | 'settings'
+type ActiveView = 'character' | 'inventory' | 'badges' | 'selection' | 'skills' | 'market' | 'vendor' | 'battle' | 'pets' | 'friends' | 'leaderboard' | 'membership' | 'map' | 'settings'
 
 export default function Home() {
   const [activeView, setActiveView] = useState<ActiveView>('character')
@@ -27,7 +27,7 @@ export default function Home() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
   const [selectedCharacter] = useState({
     name: 'Alexffb',
-    level: 42,
+    level: 0,
     class: 'Warrior',
     avatar: '🛡️',
     location: 'Ironhold Stronghold'
@@ -38,14 +38,14 @@ export default function Home() {
     { id: 'inventory', label: 'Inventory', icon: <Package className="w-5 h-5" /> },
     { id: 'badges', label: 'Badges', icon: <Award className="w-5 h-5" /> },
     { id: 'selection', label: 'Selection', icon: <Target className="w-5 h-5" /> },
-    { id: 'quests', label: 'Quests', icon: <ScrollText className="w-5 h-5" /> },
+
     { id: 'skills', label: 'Skills', icon: <Zap className="w-5 h-5" /> },
     { id: 'market', label: 'Market', icon: <ShoppingCart className="w-5 h-5" /> },
     { id: 'vendor', label: 'Vendor', icon: <Store className="w-5 h-5" /> },
     { id: 'battle', label: 'Battle', icon: <Sword className="w-5 h-5" /> },
     { id: 'pets', label: 'Pets', icon: <Heart className="w-5 h-5" /> },
-    { id: 'guild', label: 'Guild', icon: <Crown className="w-5 h-5" /> },
-    { id: 'campaign', label: 'Campaign', icon: <Gamepad2 className="w-5 h-5" /> },
+
+
     { id: 'friends', label: 'Friends', icon: <Users className="w-5 h-5" /> },
     { id: 'leaderboard', label: 'Leaderboard', icon: <Trophy className="w-5 h-5" /> },
     { id: 'membership', label: 'Membership', icon: <Crown className="w-5 h-5" /> },
@@ -77,38 +77,7 @@ export default function Home() {
         return <Badges />
       case 'selection':
         return <CharacterSelection />
-      case 'quests':
-        return (
-          <div className="space-y-6">
-            <div className="bg-discord-light rounded-lg p-6 border border-gray-600/50">
-              <h2 className="text-2xl font-bold text-discord-text mb-4">Active Quests</h2>
-              <div className="space-y-4">
-                <div className="bg-discord-dark rounded-lg p-4">
-                  <h3 className="text-discord-text font-semibold mb-2">🗡️ Defeat the Goblin King</h3>
-                  <p className="text-discord-muted text-sm mb-3">Venture into the Goblin Caves and defeat their leader to restore peace to the village.</p>
-                  <div className="flex justify-between items-center">
-                    <div className="text-sm text-discord-muted">Progress: 3/5 Goblins defeated</div>
-                    <div className="text-sm text-green-400">Reward: 500 XP, 200 Gold</div>
-                  </div>
-                  <div className="w-full bg-gray-700 rounded-full h-2 mt-2">
-                    <div className="bg-discord-blurple h-2 rounded-full" style={{ width: '60%' }}></div>
-                  </div>
-                </div>
-                <div className="bg-discord-dark rounded-lg p-4">
-                  <h3 className="text-discord-text font-semibold mb-2">📦 Collect Ancient Artifacts</h3>
-                  <p className="text-discord-muted text-sm mb-3">Gather 10 ancient artifacts scattered throughout the mystical forest.</p>
-                  <div className="flex justify-between items-center">
-                    <div className="text-sm text-discord-muted">Progress: 7/10 Artifacts found</div>
-                    <div className="text-sm text-green-400">Reward: Mystic Scroll, 300 Gold</div>
-                  </div>
-                  <div className="w-full bg-gray-700 rounded-full h-2 mt-2">
-                    <div className="bg-discord-blurple h-2 rounded-full" style={{ width: '70%' }}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )
+
       case 'skills':
         return <Skills />
       case 'market':
@@ -119,10 +88,8 @@ export default function Home() {
         return <Battle />
       case 'pets':
         return <Pets />
-      case 'guild':
-        return <Guild />
-      case 'campaign':
-        return <Campaign />
+
+
       case 'friends':
         return <Friends />
       case 'leaderboard':
@@ -227,13 +194,13 @@ export default function Home() {
               {activeView === 'inventory' && 'Manage your items and equipment'}
               {activeView === 'badges' && 'View your achievements and progress'}
               {activeView === 'selection' && 'Choose or create a character'}
-              {activeView === 'quests' && 'Track your active quests and missions'}
+      
               {activeView === 'skills' && 'View and manage your character skills'}
               {activeView === 'market' && 'Buy and sell items with other players'}
               {activeView === 'vendor' && 'Purchase items from NPCs and merchants'}
               {activeView === 'battle' && 'Fight enemies and gain experience in combat'}
               {activeView === 'pets' && 'Collect, train, and manage your companion pets'}
-              {activeView === 'guild' && 'Manage your guild and interact with members'}
+        
             </p>
           </div>
           <div className="flex items-center gap-4">

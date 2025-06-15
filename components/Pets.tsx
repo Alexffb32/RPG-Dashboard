@@ -39,10 +39,10 @@ export default function Pets() {
   const [showDetailedView, setShowDetailedView] = useState(false)
 
   const petMastery: PetMastery = {
-    level: 7,
-    experience: 139,
-    maxExperience: 200,
-    percentage: 5
+    level: 0,
+    experience: 0,
+    maxExperience: 100,
+    percentage: 0
   }
 
   const pets: Pet[] = [
@@ -50,84 +50,84 @@ export default function Pets() {
       id: '1',
       name: 'Flame Dragon',
       type: 'Dragon',
-      level: 15,
-      health: 450,
-      maxHealth: 500,
-      experience: 1250,
-      maxExperience: 1500,
+      level: 0,
+      health: 0,
+      maxHealth: 100,
+      experience: 0,
+      maxExperience: 100,
       image: '🐉',
       rarity: 'legendary',
       skills: {
-        attack: 85,
-        defense: 70,
-        speed: 60,
-        magic: 95
+        attack: 0,
+        defense: 0,
+        speed: 0,
+        magic: 0
       },
       isActive: true,
-      lastFed: '2 hours ago',
-      happiness: 85,
+      lastFed: 'Never',
+      happiness: 0,
       abilities: ['Fire Breath', 'Wing Strike', 'Dragon Roar']
     },
     {
       id: '2',
       name: 'Forest Wolf',
       type: 'Beast',
-      level: 12,
-      health: 320,
-      maxHealth: 350,
-      experience: 800,
-      maxExperience: 1000,
+      level: 0,
+      health: 0,
+      maxHealth: 100,
+      experience: 0,
+      maxExperience: 100,
       image: '🐺',
       rarity: 'rare',
       skills: {
-        attack: 75,
-        defense: 60,
-        speed: 90,
-        magic: 30
+        attack: 0,
+        defense: 0,
+        speed: 0,
+        magic: 0
       },
       isActive: false,
-      lastFed: '5 hours ago',
-      happiness: 70,
+      lastFed: 'Never',
+      happiness: 0,
       abilities: ['Pack Hunt', 'Howl', 'Swift Strike']
     },
     {
       id: '3',
       name: 'Crystal Golem',
       type: 'Elemental',
-      level: 18,
-      health: 600,
-      maxHealth: 600,
-      experience: 2100,
-      maxExperience: 2500,
+      level: 0,
+      health: 0,
+      maxHealth: 100,
+      experience: 0,
+      maxExperience: 100,
       image: '🗿',
       rarity: 'epic',
       skills: {
-        attack: 60,
-        defense: 95,
-        speed: 25,
-        magic: 80
+        attack: 0,
+        defense: 0,
+        speed: 0,
+        magic: 0
       },
       isActive: false,
-      lastFed: '1 hour ago',
-      happiness: 90,
+      lastFed: 'Never',
+      happiness: 0,
       abilities: ['Crystal Shield', 'Earth Slam', 'Regeneration']
     },
     {
       id: '4',
       name: 'Shadow Cat',
       type: 'Spirit',
-      level: 10,
-      health: 200,
-      maxHealth: 250,
-      experience: 450,
-      maxExperience: 600,
+      level: 0,
+      health: 0,
+      maxHealth: 100,
+      experience: 0,
+      maxExperience: 100,
       image: '🐱',
       rarity: 'uncommon',
       skills: {
-        attack: 70,
-        defense: 40,
-        speed: 95,
-        magic: 65
+        attack: 0,
+        defense: 0,
+        speed: 0,
+        magic: 0
       },
       isActive: false,
       lastFed: '3 hours ago',

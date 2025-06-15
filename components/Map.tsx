@@ -152,7 +152,11 @@ export default function Map({ isOpen, onClose }: MapProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <>
+      <div className="fixed inset-0 z-0">
+        <img src="/images/map-background.jpg" alt="World Map Background" className="w-full h-full object-cover opacity-80" />
+      </div>
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-gray-800 rounded-lg w-[90vw] h-[80vh] max-w-6xl relative overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
@@ -260,5 +264,6 @@ export default function Map({ isOpen, onClose }: MapProps) {
         </div>
       </div>
     </div>
+    </>
   );
 }

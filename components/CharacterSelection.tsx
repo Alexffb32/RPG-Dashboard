@@ -301,12 +301,12 @@ const characters: Character[] = [
   {
     id: '1',
     name: 'Alexffb',
-    level: 42,
+    level: 0,
     class: 'Warrior',
     avatar: '🛡️',
     isActive: true,
-    stats: { health: 718, attack: 528, defense: 347 },
-    location: 'Ironhold Stronghold',
+    stats: { health: 0, attack: 0, defense: 0 },
+    location: 'Starting Area',
     lastPlayed: 'Now',
     hasMarketAccess: true,
     canChangeClass: true
@@ -314,11 +314,11 @@ const characters: Character[] = [
   {
     id: '2',
     name: 'Shadowbane',
-    level: 35,
+    level: 0,
     class: 'Rogue',
     avatar: '🗡️',
-    stats: { health: 542, attack: 612, defense: 289 },
-    location: 'Whispering Woods',
+    stats: { health: 0, attack: 0, defense: 0 },
+    location: 'Starting Area',
     lastPlayed: '2 hours ago',
     hasMarketAccess: true,
     canChangeClass: true
@@ -326,11 +326,11 @@ const characters: Character[] = [
   {
     id: '3',
     name: 'Mysticfire',
-    level: 38,
+    level: 0,
     class: 'Mage',
     avatar: '🔮',
-    stats: { health: 456, attack: 734, defense: 201 },
-    location: 'Crystal Tower',
+    stats: { health: 0, attack: 0, defense: 0 },
+    location: 'Starting Area',
     lastPlayed: '1 day ago',
     hasMarketAccess: true,
     canChangeClass: true
@@ -338,11 +338,11 @@ const characters: Character[] = [
   {
     id: '4',
     name: 'Healinglight',
-    level: 29,
+    level: 0,
     class: 'Cleric',
     avatar: '✨',
-    stats: { health: 623, attack: 387, defense: 445 },
-    location: 'Sacred Temple',
+    stats: { health: 0, attack: 0, defense: 0 },
+    location: 'Starting Area',
     lastPlayed: '3 days ago',
     hasMarketAccess: true,
     canChangeClass: true
@@ -350,11 +350,11 @@ const characters: Character[] = [
   {
     id: '5',
     name: 'CursedSoul',
-    level: 31,
+    level: 0,
     class: 'Cursed',
     avatar: '💀',
-    stats: { health: 578, attack: 489, defense: 334 },
-    location: 'Dark Realm',
+    stats: { health: 0, attack: 0, defense: 0 },
+    location: 'Starting Area',
     lastPlayed: '1 week ago',
     hasMarketAccess: false,
     canChangeClass: false
@@ -362,11 +362,11 @@ const characters: Character[] = [
   {
     id: '6',
     name: 'ExiledOne',
-    level: 44,
+    level: 0,
     class: 'Banished',
     avatar: '⚔️',
-    stats: { health: 756, attack: 445, defense: 523 },
-    location: 'Forbidden Lands',
+    stats: { health: 0, attack: 0, defense: 0 },
+    location: 'Starting Area',
     lastPlayed: '2 weeks ago',
     hasMarketAccess: false,
     canChangeClass: false
@@ -380,23 +380,6 @@ interface CharacterCardProps {
 }
 
 function CharacterCard({ character, onSelect, isSelected }: CharacterCardProps) {
-  const getClassInfo = (className: string) => {
-    const classData = characterClasses.find(c => c.name.toLowerCase() === className.toLowerCase());
-    if (!classData) return { color: 'text-gray-400', difficulty: 'Easy' };
-    
-    const colorMap = {
-      'Easy': 'text-green-400',
-      'Medium': 'text-yellow-400', 
-      'Hard': 'text-orange-400',
-      'Extreme': 'text-red-400'
-    };
-    
-    return {
-      color: colorMap[classData.difficulty],
-      difficulty: classData.difficulty,
-      hasMarketAccess: classData.hasMarketAccess
-    };
-  };
   
   return (
     <div 
@@ -516,6 +499,24 @@ export default function CharacterSelection() {
     availablePoints: 20
   })
   const [formErrors, setFormErrors] = useState<{[key: string]: string}>({})
+
+  const getClassInfo = (className: string) => {
+    const classData = characterClasses.find(c => c.name.toLowerCase() === className.toLowerCase());
+    if (!classData) return { color: 'text-gray-400', difficulty: 'Easy' };
+    
+    const colorMap = {
+      'Easy': 'text-green-400',
+      'Medium': 'text-yellow-400', 
+      'Hard': 'text-orange-400',
+      'Extreme': 'text-red-400'
+    };
+    
+    return {
+      color: colorMap[classData.difficulty],
+      difficulty: classData.difficulty,
+      hasMarketAccess: classData.hasMarketAccess
+    };
+  };
 
   const getActiveCharacterCount = () => {
     return characters.filter(char => char.hasMarketAccess && char.isActive).length;

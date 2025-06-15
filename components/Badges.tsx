@@ -27,8 +27,7 @@ const badges: Badge[] = [
     icon: <Star className="w-6 h-6" />,
     rarity: 'common',
     category: 'achievement',
-    unlocked: true,
-    unlockedDate: '19th August 2024',
+    unlocked: false,
     reward: '+10 XP'
   },
   {
@@ -38,8 +37,7 @@ const badges: Badge[] = [
     icon: <Sword className="w-6 h-6" />,
     rarity: 'uncommon',
     category: 'combat',
-    unlocked: true,
-    unlockedDate: '20th August 2024',
+    unlocked: false,
     reward: '+5 Strength'
   },
   {
@@ -49,8 +47,7 @@ const badges: Badge[] = [
     icon: <Shield className="w-6 h-6" />,
     rarity: 'uncommon',
     category: 'combat',
-    unlocked: true,
-    unlockedDate: '22nd August 2024',
+    unlocked: false,
     reward: '+5 Defense'
   },
   {
@@ -60,8 +57,7 @@ const badges: Badge[] = [
     icon: <Target className="w-6 h-6" />,
     rarity: 'rare',
     category: 'exploration',
-    unlocked: true,
-    unlockedDate: '25th August 2024',
+    unlocked: false,
     reward: '+100 Gold'
   },
   {
@@ -71,8 +67,7 @@ const badges: Badge[] = [
     icon: <Zap className="w-6 h-6" />,
     rarity: 'rare',
     category: 'achievement',
-    unlocked: true,
-    unlockedDate: '28th August 2024',
+    unlocked: false,
     reward: '+3 Speed'
   },
   {
@@ -82,8 +77,7 @@ const badges: Badge[] = [
     icon: <Heart className="w-6 h-6" />,
     rarity: 'epic',
     category: 'combat',
-    unlocked: true,
-    unlockedDate: '2nd September 2024',
+    unlocked: false,
     reward: '+50 Max HP'
   },
   {
@@ -94,7 +88,7 @@ const badges: Badge[] = [
     rarity: 'epic',
     category: 'combat',
     unlocked: false,
-    progress: { current: 23, total: 50 },
+    progress: { current: 0, total: 50 },
     reward: '+10 All Stats'
   },
   {
@@ -105,7 +99,7 @@ const badges: Badge[] = [
     rarity: 'legendary',
     category: 'achievement',
     unlocked: false,
-    progress: { current: 42, total: 50 },
+    progress: { current: 0, total: 50 },
     reward: 'Legendary Title'
   },
   {
@@ -116,7 +110,7 @@ const badges: Badge[] = [
     rarity: 'rare',
     category: 'achievement',
     unlocked: false,
-    progress: { current: 67, total: 100 },
+    progress: { current: 0, total: 100 },
     reward: '+5 Crafting Skill'
   },
   {
@@ -127,7 +121,7 @@ const badges: Badge[] = [
     rarity: 'uncommon',
     category: 'social',
     unlocked: false,
-    progress: { current: 8, total: 20 },
+    progress: { current: 0, total: 20 },
     reward: '+2 Charisma'
   },
   {
@@ -138,7 +132,7 @@ const badges: Badge[] = [
     rarity: 'rare',
     category: 'exploration',
     unlocked: false,
-    progress: { current: 31, total: 50 },
+    progress: { current: 0, total: 50 },
     reward: '+10% Rare Drop Rate'
   },
   {

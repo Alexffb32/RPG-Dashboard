@@ -112,7 +112,7 @@ const marketItems: MarketItem[] = [
     timeLeft: '3d 15h',
     rarity: 'epic',
     type: 'weapon',
-    level: 45,
+    level: 0,
     stats: ['+7 Agility', '+9 Accuracy', '+30 Attack Power']
   },
   {
@@ -278,7 +278,7 @@ export default function Market() {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 text-sm text-discord-muted">
               <Coins className="w-4 h-4 text-yellow-400" />
-              <span>Your Gold: 17,540</span>
+              <span>Your Gold: 0</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-discord-muted">
               <Package className="w-4 h-4 text-blue-400" />
