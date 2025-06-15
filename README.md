@@ -177,6 +177,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Next.js team for the amazing framework
 - Tailwind CSS for utility-first styling
 
+## 🤖 AI Collaboration
+
+This project was co-developed with AI assistance, leveraging artificial intelligence to enhance development efficiency, code quality, and feature implementation. The collaboration between human creativity and AI capabilities helped accelerate the development process while maintaining high standards of code architecture and user experience design.
+
 ## 📞 Support
 
 If you have any questions or need help, please:
