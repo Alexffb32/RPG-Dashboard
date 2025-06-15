@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-700;
+  }
+  body {
+    @apply bg-discord-darker text-discord-text;
+    font-family: Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+}
+
+@layer components {
+  .sidebar-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #202225 #2f3136;
+  }
+  
+  .sidebar-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .sidebar-scrollbar::-webkit-scrollbar-track {
+    background: #2f3136;
+  }
+  
+  .sidebar-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #202225;
+    border-radius: 4px;
+  }
+  
+  .sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #1a1d21;
+  }
+
+  .panel {
+    @apply bg-discord-light rounded-lg border border-gray-700/50 shadow-lg;
+  }
+
+  .panel-header {
+    @apply flex items-center justify-between p-4 border-b border-gray-700/50;
+  }
+
+  .panel-content {
+    @apply p-4;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-md text-discord-muted hover:text-discord-text hover:bg-discord-light/50 transition-all duration-200 cursor-pointer;
+  }
+
+  .nav-item.active {
+    @apply text-discord-text bg-discord-light;
+  }
+
+  .equipment-slot {
+    @apply w-12 h-12 bg-discord-dark rounded-lg border border-gray-600/50 flex items-center justify-center hover:border-discord-blurple/50 transition-colors cursor-pointer;
+  }
+
+  .status-indicator {
+    @apply flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium;
+  }
+
+  .status-indicator.hunting {
+    @apply bg-discord-green/20 text-discord-green;
+  }
+
+  .status-indicator.nearby {
+    @apply bg-discord-blurple/20 text-discord-blurple;
+  }
+
+  .status-indicator.map {
+    @apply bg-discord-yellow/20 text-discord-yellow;
+  }
+}
