@@ -191,7 +191,7 @@ If you have any questions or need help, please:
 ---
 
 **Version**: Pre-Alpha  
-**Last Updated**: December 2024  
+**Last Updated**: June 2025  
 **Status**: Active Development
 
 Enjoy your RPG adventure! 🎮⚔️🏰
